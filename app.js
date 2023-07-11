@@ -47,7 +47,7 @@
 
 // rotas 
         app.get('/', (req, res) => {
-            res.send('Rota principal')
+            res.render("index")
         })
         app.use('/admin', admin)
 // outros
