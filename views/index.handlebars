@@ -1,1 +1,30 @@
-<h2>Página de posts</h2>
+<div class="jumbotron">
+    <h1 class="display-4">Bem-vindo ao Blog do Node</h1>
+    <p class="lead">kmdjvbvbdvubvsivevkin cnsivnedvj cizcnivoa mcnskjdgeuf ncksbchw i XWNOWCWBCHWO</p>
+    <hr class="my-4">
+    <p>kmdjvbvbdvubvsivevkin cnsivnedvj cizcnivoa mcnskjdgeuf ncksbchw i XWNOWCWBCHWO</p>
+    <p class="lead">
+        <a href="" role="button" class="btn btn-primary btn-lg">Crie uma conta</a>
+    </p>
+</div>
+
+<hr>
+
+<h2>Postagens recentes: </h2>
+
+{{#each postagens}}
+<div class="card mt-4">
+    <div class="card-body">
+        <h3>{{titulo}}</h3>
+        <p>{{descricao}}</p>
+        <a href="/postagem/{{slug}}">
+            <button class="btn btn-success">Leia mais</button>
+        </a>
+        <hr>
+        <small>Categoria: {{categoria.nome}}</small><br>
+        <small>Data de publicação: {{data}}</small>
+    </div>
+</div>
+{{else}}
+    <h5>Nenhuma postagem</h5>
+{{/each}}
