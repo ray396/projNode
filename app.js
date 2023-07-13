@@ -8,11 +8,13 @@
     const mongoose = require("mongoose");
     const session = require("express-session");
     const flash = require("connect-flash");
-    require("./models/Postagem")
-    const Postagem = mongoose.model("postagens")
-    require("./models/Categoria")
-    const Categoria = mongoose.model("categorias")
-    const usuarios = require("./routes/usuario")
+    require("./models/Postagem");
+    const Postagem = mongoose.model("postagens");
+    require("./models/Categoria");
+    const Categoria = mongoose.model("categorias");
+    const usuarios = require("./routes/usuario");
+    const passport = require('passport');
+    require("./config/auth")(passport);
 // configurações 
     // sessão
         app.use(session({
@@ -20,11 +22,14 @@
             resave: true,
             saveUninitialized: true
         }))
+        app.use(passport.initialize())
+        app.use(passport.session())
         app.use(flash())
         // middleware
         app.use((req, res, next) => {
             res.locals.success_msg = req.flash("success_msg")
             res.locals.error_msg = req.flash("error_msg")
+            res.locals.error = req.flash("error")
             next()
         })
     // body parser
